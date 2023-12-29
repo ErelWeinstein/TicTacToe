@@ -1,7 +1,10 @@
 package com.example.tictactoe;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AlertDialogLayout;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,19 +20,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    private void onNewGame()
-    {
+    private void onNewGame() {
         board = new String[3][3];
-        for (int row = 0; row < 3; row++)
-        {
-            for (int col = 0; col < 3; col++)
-            {
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
                 board[row][col] = new String();
             }
         }
         turn = "x";
         count = 0;
     }
+
 
     public void onBtnClicked(View view)
     {
@@ -79,5 +80,31 @@ public class MainActivity extends AppCompatActivity {
             onTurnEnd();
 
         }
+    }
+
+    private void endGame()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("More Info");
+        String msg = "This is the message body";
+        builder.setMessage(msg);
+        builder.setPositiveButton("EXIT", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+             // Exit handling
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+             // Cancel handling
+            }
+        });
+        AlertDialog dialog = builder.show();
+
     }
 }
