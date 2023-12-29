@@ -65,19 +65,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void onTurnEnd() {
-        if (isWinner())
-            endGame(turn + " won!");
-        else {
-            count++;
-            if (count == 9)
-                endGame("Tie");
-            else {
-                turn = (turn.equals("X") ? "O" : "X");
-            }
-        }
-    }
-
     private void endGame(String s) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("More Info");
@@ -131,5 +118,18 @@ public class MainActivity extends AppCompatActivity
             }
         }
         return false;
+    }
+
+    private void onTurnEnd() {
+        if (isWinner())
+            endGame(turn + " won!");
+        else {
+            count++;
+            if (count == 9)
+                endGame("Tie");
+            else {
+                turn = (turn.equals("X") ? "O" : "X");
+            }
+        }
     }
 }
