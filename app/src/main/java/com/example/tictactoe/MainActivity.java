@@ -89,14 +89,14 @@ public class MainActivity extends AppCompatActivity
     {
         for (int row = 0; row < 3; row++)
         {
-            if (board[row][0].toString() == board[row][1].toString() && board[row][0].toString() == board[row][2].toString())
+            if (board[row][0].equals(board[row][1])  && board[row][0].equals(board[row][2]))
             {
                 return true;
             }
 
             for (int col = 0; col < 3; col++)
             {
-                if (board[col][0].toString() == board[col][1].toString() && board[col][0].toString() == board[col][2].toString())
+                if (board[0][col].equals(board[1][col])  && board[0][col].equals(board[2][col]))
                 {
                     return true;
                 }
@@ -106,11 +106,11 @@ public class MainActivity extends AppCompatActivity
             {
                 for (int col = 0; col < 3; col++)
                 {
-                    if (board[0][0].toString() == board[1][1].toString() && board[0][0].toString() == board[2][2].toString())
+                    if (board[0][0].equals(board[1][1]) && board[0][0].equals(board[2][2]))
                     {
                         return true;
                     }
-                    if (board[0][2].toString() == board[1][1].toString() && board[0][2].toString() == board[2][0].toString())
+                    if (board[0][2].equals(board[1][1]) && board[0][2].equals(board[2][0]))
                     {
                         return true;
                     }
@@ -120,14 +120,17 @@ public class MainActivity extends AppCompatActivity
         return false;
     }
 
-    private void onTurnEnd() {
+    private void onTurnEnd()
+    {
         if (isWinner())
             endGame(turn + " won!");
-        else {
+        else
+        {
             count++;
             if (count == 9)
                 endGame("Tie");
-            else {
+            else
+            {
                 turn = (turn.equals("X") ? "O" : "X");
             }
         }
